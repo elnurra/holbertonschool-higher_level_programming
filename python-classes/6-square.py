@@ -1,17 +1,19 @@
 #!/usr/bin/python3
-"""a class Square that defines a square by: (based on 2-square.py)"""
+"""A class Square that defines a square by: (based on 2-square.py)"""
 
 
 class Square:
-    """a classs that defines and initializes an instance
-
+    """A class that defines and initializes an instance
 
     Attributes:
         __size: size of the instance
-    methods:
-        __init__: initialises the instance of the class
+        __position: position of the instance
+    Methods:
+        __init__: initializes the instance of the class
         area: computes the area of the instance
+        my_print: prints the square at a given position
     """
+
     @property
     def size(self):
         return self.__size
@@ -20,7 +22,6 @@ class Square:
     def size(self, value):
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
-
         elif value < 0:
             raise ValueError("size must be >= 0")
         else:
@@ -32,9 +33,13 @@ class Square:
 
     @position.setter
     def position(self, value):
-        if not isinstance(value[0], int) or len(value) < 2 or value[0] < 0:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        elif not isinstance(value[1], int) or len(value) < 2 or value[1] < 0:
+        if (
+            not isinstance(value[0], int)
+            or not isinstance(value[1], int)
+            or len(value) != 2
+            or value[0] < 0
+            or value[1] < 0
+        ):
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
@@ -48,12 +53,17 @@ class Square:
     def my_print(self):
         if self.size == 0:
             print()
-        for i in range(self.position[1]):
-            if i > 0:
+        else:
+            for i in range(self.position[1]):
                 print()
-        for i in range(self.size):
-            # if not self.position[1] > 0:
-            print("_" * self.position[0], end="")
             for i in range(self.size):
-                print("#", end="")
-            print()
+                print(" " * self.position[0], end="")
+                for j in range(self.size):
+                    print("#", end="")
+                print()
+
+
+if __name__ == "__main__":
+    my_square = Square(3, (1, 0))
+    my_square.my_print()
+
