@@ -68,7 +68,7 @@ class Square:
             return "\n"
 
         for i in range(self.position[1]):
-                ret += "\n"
+            ret += "\n"
         for i in range(self.size):
             for j in range(self.position[0]):
                 ret += " "
@@ -80,3 +80,11 @@ class Square:
     def my_print(self):
         """Prints this square."""
         print(self.my_sprint(), end="")
+
+if __name__ == "__main__":
+    try:
+        my_square = Square(3, (1, ))
+        my_square.my_print()
+    except Exception as e:
+        print(e)
+
