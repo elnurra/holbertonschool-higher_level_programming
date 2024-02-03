@@ -3,6 +3,8 @@
 
 
 class Square:
+
+
     """Defines a square."""
 
     def __str__(self):
@@ -87,4 +89,3 @@ if __name__ == "__main__":
         my_square.my_print()
     except Exception as e:
         print(e)
-
