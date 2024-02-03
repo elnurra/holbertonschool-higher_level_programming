@@ -34,9 +34,10 @@ class Square:
     @position.setter
     def position(self, value):
         if (
-            not isinstance(value[0], int)
-            or not isinstance(value[1], int)
+            not isinstance(value, tuple)
             or len(value) != 2
+            or not isinstance(value[0], int)
+            or not isinstance(value[1], int)
             or value[0] < 0
             or value[1] < 0
         ):
@@ -64,6 +65,9 @@ class Square:
 
 
 if __name__ == "__main__":
-    my_square = Square(3, (1, 0))
-    my_square.my_print()
+    try:
+        my_square = Square(3, (1, ))
+        my_square.my_print()
+    except Exception as e:
+        print(e)
 
