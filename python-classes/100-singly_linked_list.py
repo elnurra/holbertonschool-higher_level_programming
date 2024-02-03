@@ -26,7 +26,7 @@ class Node:
     @next_node.setter
     def next_node(self, value):
         """Setter for the next_node attribute."""
-        if value is not None and type(value) != Node:
+        if value is not None and not isinstance(value, Node):
             raise TypeError('next_node must be a Node object')
         self.__next_node = value
 
@@ -64,4 +64,3 @@ class SinglyLinkedList:
         if node.next_node:
             new.next_node = node.next_node
         node.next_node = new
-
