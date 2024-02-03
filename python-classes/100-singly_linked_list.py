@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Module that defines a singly linked list and its node."""
+
 class Node:
     """Node class for a singly linked list."""
     def __init__(self, data, next_node=None):
