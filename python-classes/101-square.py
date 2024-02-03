@@ -3,10 +3,7 @@
 
 
 class Square:
-
-
     """Defines a square."""
-
     def __str__(self):
         """Returns string representation."""
         return self.my_sprint()[:-1]
@@ -82,6 +79,7 @@ class Square:
     def my_print(self):
         """Prints this square."""
         print(self.my_sprint(), end="")
+
 
 if __name__ == "__main__":
     try:
