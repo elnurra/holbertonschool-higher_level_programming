@@ -70,4 +70,3 @@ if __name__ == "__main__":
         my_square.my_print()
     except Exception as e:
         print(e)
-
