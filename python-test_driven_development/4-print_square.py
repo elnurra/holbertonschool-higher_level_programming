@@ -3,6 +3,7 @@
 Module to prints square
 """
 
+
 def print_square(size):
     """ This function prints square
     Args:
