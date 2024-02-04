@@ -2,6 +2,8 @@
 """
 Module to print my name
 """
+
+
 def say_my_name(first_name, last_name=""):
     """ This function prints my name
     Args:
