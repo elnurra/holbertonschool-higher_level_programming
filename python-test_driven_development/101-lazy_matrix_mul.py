@@ -16,18 +16,11 @@ def lazy_matrix_mul(m_a, m_b):
 
     Raises:
         ValueError: If either m_a or m_b is a string,
-        as matrix multiplication is not defined for strings.
+        as scalar operands are not allowed; use '*' instead.
     """
     if isinstance(m_a, str):
-        if isinstance(m_b, np.ndarray):
-            return np.array([m_a * element for element in m_b], dtype=object)
-        else:
-            raise ValueError("Matrix multiplication is not defined for a string.")
+        raise ValueError("Scalar operands are not allowed; use '*' instead.")
     elif isinstance(m_b, str):
-        if isinstance(m_a, np.ndarray):
-            return np.array([element * m_b for element in m_a], dtype=object)
-        else:
-            raise ValueError("Matrix multiplication is not defined for a string.")
+        raise ValueError("Scalar operands are not allowed; use '*' instead.")
     else:
         return np.matmul(m_a, m_b)
-
