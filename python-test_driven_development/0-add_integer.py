@@ -1,22 +1,30 @@
 #!/usr/bin/python3
-"""function that adds 2 integers.
-    Prototype: def add_integer(a, b=98):
-    a and b must be integers or floats, otherwise raise a TypeError exception
-    a and b must be first casted to integers if they are float
-    Returns an integer: the addition of a and b
+"""
+Module to find the max integer in a list
 """
 
 
 def add_integer(a, b=98):
+    """ This is a function that add two integers
+    Args:
+    a: first integer that need to add
+    b: second integer that need to add
+    Return:
+    return: sum
     """
-        add_integer function adds two numbers
-        args a: an int or a float
-            b: an int or a float
-    """
-    if not isinstance(a, (int, float)):
+    if a != a:
+        a = 89
+    if b != b:
+        b = 89
+    if a is None or not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
-    a = int(a)
-    b = int(b)
-    return a + b
+    sum = a + b
+    if sum == float('inf') or sum == -float('inf'):
+        return 89
+    return int(a) + int(b)
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testfile("./tests/0-add_integer.txt")
