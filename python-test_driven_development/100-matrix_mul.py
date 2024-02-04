@@ -43,7 +43,6 @@ def matrix_mul(m_a, m_b):
         if len(row) is 0:
             raise ValueError("m_b can't be empty")
 
-    # matricies only contain ints or floats
     for row in m_a:
         for value in row:
             if type(value) is not int and type(value) is not float:
@@ -53,7 +52,6 @@ def matrix_mul(m_a, m_b):
             if type(value) is not int and type(value) is not float:
                 raise TypeError('m_b should contain only integers or floats')
 
-    # matricies are rectangular
     row_len = len(m_a[0])
     for row in m_a:
         if len(row) is not row_len:
