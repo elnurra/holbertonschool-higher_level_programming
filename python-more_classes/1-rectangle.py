@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """
-This module defines a Rectangle class 
-that represents a rectangle and
-provides methods to work with it.
+This module defines a Rectangle class
+that represents a rectangle and provides methods to work with it.
 """
 
 
@@ -66,5 +65,20 @@ class Rectangle:
         """
         return self.__height
 
-    @heig
+    @height.setter
+    def height(self, value):
+        """
+        Sets the height of the rectangle.
 
+        Args:
+            value (int): The height value to set.
+
+        Raises:
+            TypeError: If value is not an integer.
+            ValueError: If value is less than 0.
+        """
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        if value < 0:
+            raise ValueError("height must be >= 0")
+        self.__height = value
