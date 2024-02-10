@@ -44,19 +44,17 @@ if __name__ == "__main__":
 
     def clear_a(x):
         """clears the answers from the point of failure on"""
-        for i in range(x, n):
-            a[i][1] = None
+    for i in range(x, n):
+        a[i][1] = None
 
     def nqueens(x):
         """recursive backtracking function to find the solution"""
-        for y in range(n):
-            clear_a(x)
-            if reject(x, y):
-                a[x][1] = y
-                if (x == n - 1):  # accepts the solution
-                    print(a)
-                else:
-                    nqueens(x + 1)  # moves on to next x value to continue
-
-    # start the recursive process at x = 0
+    for y in range(n):
+        clear_a(x)
+        if reject(x, y):
+            a[x][1] = y
+            if (x == n - 1):
+                print(a)
+            else:
+                nqueens(x + 1)
     nqueens(0)
