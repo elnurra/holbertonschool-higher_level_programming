@@ -40,7 +40,7 @@ if __name__ == "__main__":
             if abs(a[i][1] - y) == abs(i - x):
                 return False
             i += 1
-            return True
+        return True
 
     def clear_a(x):
         """clears the answers from the point of failure on"""
