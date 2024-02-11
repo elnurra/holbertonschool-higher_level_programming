@@ -1,39 +1,41 @@
 #!/usr/bin/python3
-import sys
 
+"""
+101-stats Module
+"""
 
-def print_status():
-    '''
-    Printing the status of the request
-    '''
-    counter = 0
-    size = 0
+if __name__ == '__main__':
+
+    import sys
+
     file_size = 0
-    status_codes = {"200": 0, "301": 0, "400": 0, "401": 0,
-                    "403": 0, "404": 0, "405": 0, "500": 0}
+    valid_codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
+    stats = {k: 0 for k in valid_codes}
+    counter = 0
 
-    for l in sys.stdin:
-        line = l.split()
-        try:
-            size += int(line[-1])
-            code = line[-2]
-            status_codes[code] += 1
-        except:
-            continue
-        if counter == 9:
-            print("File size: {}".format(size))
-            for key, val in sorted(status_codes.items()):
-                if (val != 0):
-                    print("{}: {}".format(key, val))
-            counter = 0
-        counter += 1
-    if counter < 9:
-        print("File size: {}".format(size))
-        for key, val in sorted(status_codes.items()):
-            if (val != 0):
-                print("{}: {}".format(key, val))
+    def print_stats(stats: dict, file_size: int) -> None:
+        print("File size: {:d}".format(file_size))
+        for k, v in sorted(stats.items()):
+            if v:
+                print("{}: {}".format(k, v))
 
-
-if __name__ == "__main__":
-    print_status()
-
+    try:
+        for line in sys.stdin:
+            counter += 1
+            data = line.split()
+            try:
+                status_code = data[-2]
+                if status_code in stats:
+                    stats[status_code] += 1
+            except BaseException:
+                pass
+            try:
+                file_size += int(data[-1])
+            except BaseException:
+                pass
+            if counter % 10 == 0:
+                print_stats(stats, file_size)
+        print_stats(stats, file_size)
+    except KeyboardInterrupt:
+        print_stats(stats, file_size)
+        raise
