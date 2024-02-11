@@ -1,35 +1,41 @@
 #!/usr/bin/python3
-
-"""
-101-stats Module
-"""
-
+"""Log parsing script."""
 import sys
-from collections import defaultdict
+
+total_size = 0
+codes = {'200': 0, '301': 0, '400': 0, '401': 0,
+         '403': 0, '404': 0, '405': 0, '500': 0}
+iteration = 0
 
 
-def print_metrics(total_size, status_counts):
-    print(f"File size: {total_size}")
-    for code in sorted(status_counts.keys()):
-        print(f"{code}: {status_counts[code]}")
+def print_stats():
+    """Function that prints a resume of the stats."""
+    print("File size: {}".format(total_size))
+    for k, v in sorted(codes.items()):
+        if v is not 0:
+            print("{}: {}".format(k, v))
 
 
-def main():
-    total_size = 0
-    status_counts = defaultdict(int)
-    try:
-        for i, line in enumerate(sys.stdin, start=1):
-            parts = line.split()
-            if len(parts) >= 7:
-                status_code = parts[-2]
-                file_size = int(parts[-1])
-                total_size += file_size
-                status_counts[status_code] += 1
-            if i % 10 == 0:
-                print_metrics(total_size, status_counts)
-    except KeyboardInterrupt:
-        print_metrics(total_size, status_counts)
+try:
+    for line in sys.stdin:
+        line = line.split()
+        if len(line) >= 2:
+            tmp = iteration
+            if line[-2] in codes:
+                codes[line[-2]] += 1
+                iteration += 1
+            try:
+                total_size += int(line[-1])
+                if tmp == iteration:
+                    iteration += 1
+            except:
+                if tmp == iteration:
+                    continue
 
+        if iteration % 10 == 0:
+            print_stats()
 
-if __name__ == "__main__":
-    main()
+    print_stats()
+
+except KeyboardInterrupt:
+    print_stats()
