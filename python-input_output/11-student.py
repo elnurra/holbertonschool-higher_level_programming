@@ -13,8 +13,8 @@ class Student:
     def to_json(self, attrs=None):
         """retrieves a dictionary representation of a Student instance
         with filter"""
-        if (type(attrs) == list and
-                all(type(element) == str for element in attrs)):
+        if (type(attrs) is list and
+                all(type(element) is str for element in attrs)):
             new_dict = {}
             for element in attrs:
                 if element in self.__dict__:
