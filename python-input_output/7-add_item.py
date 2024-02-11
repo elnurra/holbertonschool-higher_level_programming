@@ -2,7 +2,7 @@
 """Load, add, save"""
 
 from sys import argv
-
+import json
 
 if __name__ == "__main__":
     save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     try:
         list = load_from_json_file(filename)
-    except:
+    except json.JSONDecodeError:
         list = []
 
     list.extend(argv[1:])
