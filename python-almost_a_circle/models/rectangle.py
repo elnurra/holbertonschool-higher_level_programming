@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-"""
-Rectangle Module
-"""
+"""Defines a Rectangle class that inherits from Base."""
 
 
-class Rectangle:
-    """
-    Rectangle Class
-    """
-    def __init__(self, width, height, x=0, y=0):
-        """Initialize rectangle with width, height, x and y."""
+from models.base import Base
+
+
+class Rectangle(Base):
+    """Rectangle class that inherits from Base."""
+    def __init__(self, width, height, x=0, y=0, id=None):
+        """Initializes a Rectangle instance."""
+        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
@@ -17,12 +17,12 @@ class Rectangle:
 
     @property
     def width(self):
-        """Get width."""
+        """Getter for width."""
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Set width."""
+        """Setter for width."""
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         elif value <= 0:
@@ -32,12 +32,12 @@ class Rectangle:
 
     @property
     def height(self):
-        """Get height."""
+        """Getter for height."""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Set height."""
+        """Setter for height."""
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         elif value <= 0:
@@ -47,12 +47,12 @@ class Rectangle:
 
     @property
     def x(self):
-        """Get x."""
+        """Getter for x."""
         return self.__x
 
     @x.setter
     def x(self, value):
-        """Set x."""
+        """Setter for x."""
         if not isinstance(value, int):
             raise TypeError("x must be an integer")
         elif value < 0:
@@ -62,12 +62,12 @@ class Rectangle:
 
     @property
     def y(self):
-        """Get y."""
+        """Getter for y."""
         return self.__y
 
     @y.setter
     def y(self, value):
-        """Set y."""
+        """Setter for y."""
         if not isinstance(value, int):
             raise TypeError("y must be an integer")
         elif value < 0:
@@ -87,4 +87,5 @@ class Rectangle:
     def __str__(self):
         """Returns a string representation of the Rectangle instance."""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
-                self.id, self.__x, self.__y, self.__width, self.__height)
+            self.id, self.__x, self.__y, self.__width, self.__height
+        )
