@@ -1,14 +1,5 @@
 #!/usr/bin/python3
-""" 3-main """
-from models.rectangle import Rectangle
+write_file = __import__('3-write_file').write_file
 
-if __name__ == "__main__":
-
-    r1 = Rectangle(3, 2)
-    print(r1.area())
-
-    r2 = Rectangle(2, 10)
-    print(r2.area())
-
-    r3 = Rectangle(8, 7, 0, 0, 12)
-    print(r3.area())
+nb_characters = write_file("my_first_file.txt", "Holberton School is so cool!\n")
+print(nb_characters)

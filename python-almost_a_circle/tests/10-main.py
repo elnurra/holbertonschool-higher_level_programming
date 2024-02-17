@@ -1,16 +1,12 @@
 #!/usr/bin/python3
-""" 10-main """
-from models.square import Square
+MyClass = __import__('10-my_class').MyClass
+class_to_json = __import__('10-class_to_json').class_to_json
 
-if __name__ == "__main__":
+m = MyClass("John")
+m.number = 89
+print(type(m))
+print(m)
 
-    s1 = Square(5)
-    print(s1)
-    print(s1.size)
-    s1.size = 10
-    print(s1)
-
-    try:
-        s1.size = "9"
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
+mj = class_to_json(m)
+print(type(mj))
+print(mj)

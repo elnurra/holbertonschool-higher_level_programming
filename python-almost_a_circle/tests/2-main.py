@@ -1,27 +1,11 @@
 #!/usr/bin/python3
-""" 2-main """
-from models.rectangle import Rectangle
+read_lines = __import__('2-read_lines').read_lines
 
-if __name__ == "__main__":
-
-    try:
-        Rectangle(10, "2")
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
-
-    try:
-        r = Rectangle(10, 2)
-        r.width = -10
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
-
-    try:
-        r = Rectangle(10, 2)
-        r.x = {}
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
-
-    try:
-        Rectangle(10, 2, 3, -1)
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
+print("1 line:")
+read_lines("my_file_0.txt", 1)
+print("--")
+print("3 lines:")
+read_lines("my_file_0.txt", 3)
+print("--")
+print("Full content:")
+read_lines("my_file_0.txt")
