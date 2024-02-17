@@ -29,6 +29,19 @@ class Base:
         dummy.update(**dictionary)  # Update dummy instance with real values
         return dummy
 
+    @classmethod
+    def load_from_file(cls):
+        """Returns a list of instances from a JSON file."""
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, "r") as file:
+                json_data = file.read()
+        except FileNotFoundError:
+            return []
+
+        list_dicts = cls.from_json_string(json_data)
+        return [cls.create(**d) for d in list_dicts]
+
     @staticmethod
     def to_json_string(list_dictionaries):
         """Returns the JSON string representation of list_dictionaries."""
