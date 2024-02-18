@@ -3,6 +3,7 @@
 
 
 import json
+import turtle
 
 
 class Base:
@@ -67,3 +68,44 @@ class Base:
             return []
         else:
             return json.loads(json_string)
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        # Initialize the turtle screen
+        screen = turtle.Screen()
+        screen.title("Shapes Drawing")
+        screen.setup(width=800, height=600)
+
+        # Create a turtle object
+        pen = turtle.Turtle()
+        pen.speed(0)  # Set the drawing speed to the fastest
+
+        # Draw rectangles
+        for rectangle in list_rectangles:
+            pen.penup()
+            pen.goto(rectangle.x, rectangle.y)
+            pen.pendown()
+            pen.color("blue")  # Set color for rectangles
+            pen.begin_fill()
+            for _ in range(2):
+                pen.forward(rectangle.width)
+                pen.left(90)
+                pen.forward(rectangle.height)
+                pen.left(90)
+            pen.end_fill()
+
+        # Draw squares
+        for square in list_squares:
+            pen.penup()
+            pen.goto(square.x, square.y)
+            pen.pendown()
+            pen.color("red")  # Set color for squares
+            pen.begin_fill()
+            for _ in range(4):
+                pen.forward(square.size)
+                pen.left(90)
+            pen.end_fill()
+
+        # Hide the turtle and display the drawing
+        pen.hideturtle()
+        screen.mainloop()
