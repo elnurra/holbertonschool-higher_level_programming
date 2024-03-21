@@ -1,3 +1,4 @@
--- 0x0D. SQL - Introduction, task 2. Delete a database
+hows all tables in a database given as cmd line arg to mysql.
+SHOW TABLES;
 -- Deletes the database `hbtn_0c_0` if it exists.
 DROP DATABASE IF EXISTS hbtn_0c_0;
