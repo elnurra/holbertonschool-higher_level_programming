@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""0x0F. Python - Object-relational mapping - task 0. Get all states"""
+"""Python - Object-relational mapping - task 0. Get all states"""
 
 if __name__ == '__main__':
     import sys
