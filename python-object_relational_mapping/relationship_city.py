@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Lists states"""
 
+
 from sqlalchemy import Column, Integer, String, ForeignKey
 from relationship_state import Base
 
